@@ -19,7 +19,7 @@ export const Login = () => {
   <i class="fa-solid fa-lock passwordIcon"></i>
   <input type=password class="password" id="contraseña" placeholder="Contraseña"></input><br><br>
   </div>
-  <button id="iniciar">Iniciar sesión</button> <br><br>
+  <button id="start">Iniciar sesión</button> <br><br>
   <button id="google"><img src="images/google-img.png" class="imageGoogle"/><p>Continuar con Google</p></button> <br><br>
   <p id="o">ó</p><br>
   <p id="registro">Registrate en FitWoman</p><br><br>
@@ -39,9 +39,12 @@ export const Login = () => {
   });
   const loginGoogle = document.getElementById('google');
   loginGoogle.addEventListener('click', () => {
-    console.log(startGoogle());
+    startGoogle();
   });
 };
+ 
+// inicio con correo 
+
 
 // eslint-disable-next-line import/no-cycle
 // import { onNavigate } from '../main.js';

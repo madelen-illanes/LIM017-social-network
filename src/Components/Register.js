@@ -28,13 +28,6 @@ export const Register = () => {
   </div>
   <div class="div__imageLogin"><img src="images/fondoInicio3.webp" class="imageLogin"/></div>`;
 
-
-
-
-
-
-  
-    
     // const register = document.getElementById("register");
     // register.addEventListener('click', () => {
     //   const valueOfEmail= document.getElementById("e-mail").value;
