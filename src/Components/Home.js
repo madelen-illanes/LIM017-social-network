@@ -1,9 +1,10 @@
+/* eslint-disable quotes */
 import { getCurrentUser, loginOutUser } from '../lib/librariesfirebase.js';
 
 export const Home = () => {
   const user = getCurrentUser();
-  const userName = user.displayName;
-
+  const userName = user.displayName.slice(0, 1);
+  
   document.getElementById('root').innerHTML = `
   <header class="header">
     <h3>${userName}</h3>
@@ -13,7 +14,6 @@ export const Home = () => {
   </header>
   <main class="main">
     <div id="post">PUBLICACIONES</div>
-
   </main>`;
   const loginOut = document.getElementById('loginOut');
   loginOut.addEventListener('click', () => loginOutUser());

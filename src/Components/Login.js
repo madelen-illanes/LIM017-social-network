@@ -20,7 +20,7 @@ export const Login = () => {
   <i class="fa-solid fa-lock passwordIcon"></i>
   <input type=password class="password" id="passwordLogin" placeholder="Contraseña"></input><br><br>
   </div>
-  <button id="start">Iniciar sesión</button> <br><br>
+  <button id="iniciar">Iniciar sesión</button> <br><br>
   <button id="google"><img src="images/google-img.png" class="imageGoogle"/><p>Continuar con Google</p></button> <br><br>
   <p id="o">ó</p><br>
   <p id="registro">Registrate en FitWoman</p><br><br>
@@ -43,23 +43,3 @@ export const Login = () => {
     startGoogle();
   });
 };
- 
-// inicio con correo 
-
-
-// eslint-disable-next-line import/no-cycle
-// import { onNavigate } from '../main.js';
-
-// export const Login = () => {
-//   const HomeDiv = document.createElement('div');
-//   HomeDiv.textContent = 'Bienvenida al Login';
-//   const buttonHome = document.createElement('button');
-
-//   buttonHome.textContent = 'Regresar al Home';
-
-//   buttonHome.addEventListener('click', () => onNavigate('/'));
-
-//   HomeDiv.appendChild(buttonHome);
-
-//   return HomeDiv;
-// };

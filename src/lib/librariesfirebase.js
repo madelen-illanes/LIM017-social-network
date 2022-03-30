@@ -1,7 +1,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-import { getFirestore, addDoc , collection } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+import { getFirestore, addDoc, collection } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './configurationfirebase.js';
 
 export const auth = getAuth();

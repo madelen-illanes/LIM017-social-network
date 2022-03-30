@@ -5,7 +5,7 @@ import { routes } from './lib/routes.js';
 
 myFunction();
 const init = () => {
-    window.location.hash = '#/home';
+    window.location.hash = '#/login';
     routes(window.location.hash);
     // observador();
   };
