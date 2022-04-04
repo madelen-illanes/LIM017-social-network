@@ -1,7 +1,8 @@
+/* eslint-disable arrow-parens */
 import {
   getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-import { getFirestore, addDoc, collection, Timestamp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+import { getFirestore, addDoc, collection, getDocs, Timestamp, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 import { app } from './configurationfirebase.js';
 
 export const auth = getAuth();
@@ -94,6 +95,27 @@ export const startGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
     });
+};
+// subir post
+export const toPost = async () => {
+  const forPost = document.querySelector('.post__input').value;
+  const docRef = await addDoc(collection(db, 'publicaciones'), {
+    user: getCurrentUser().displayName,
+    datetime: Timestamp.fromDate(new Date()),
+    content: forPost,
+  });
+  console.log('Document written with ID: ', docRef.id);
+  return docRef;
+};
+
+export const loadPosts = async () => {
+  const publishCollection = collection(db, 'publicaciones');
+  const publishSnapshot = await getDocs(publishCollection);
+  const publishList = publishSnapshot.docs.map(doc => doc.data());
+  console.log(publishList);
+  const q = query(collection(db, 'publicaciones'), orderBy('datetime', 'desc'));
+  console.log(q);
+  return publishList;
 };
 
 
