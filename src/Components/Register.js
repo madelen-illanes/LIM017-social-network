@@ -1,5 +1,5 @@
 import { Login } from './Login.js';
-import { registerUser } from '../lib/librariesfirebase.js';
+import { registerUser } from '../lib/libraries-Firebase.js';
 
 export const Register = () => {
   document.getElementById('root').innerHTML = `
@@ -13,7 +13,7 @@ export const Register = () => {
   </div>
   <div class="div__Username">
   <i class="fa-solid fa-envelope e-mailIcon"></i>
-  <input type="text" class="Register__input" id="e-mail" placeholder="Correo electrónico"></input>
+  <input type="email" class="Register__input" id="e-mail" placeholder="Correo electrónico"></input>
   </div>
   <div class="div__Username">
   <i class="fa-solid fa-lock passwordIcon"></i>
@@ -28,25 +28,15 @@ export const Register = () => {
   </div>
   <div class="div__imageLogin"><img src="images/fondoInicio5.png" class="imageLogin"/></div>`;
 
-    // const register = document.getElementById("register");
-    // register.addEventListener('click', () => {
-    //   const valueOfEmail= document.getElementById("e-mail").value;
-    //   const valueOfconfirmPassword= document.getElementById("confirmPassword").value;
-    //   console.log(valueOfEmail, valueOfconfirmPassword)
+  // const valueOfPassword = document.getElementById('password').value;
+  // const valueOfconfirmPassword = document.getElementById('confirmPassword').value;
+  // console.log(valueOfPassword, valueOfconfirmPassword);
+  document.getElementById('Register__iconBack').addEventListener('click', () => {
+    window.location.hash = '#/login';
+  });
 
-    //   auth
-    //   .createUserWithEmailAndPassword(valueOfEmail, valueOfconfirmPassword)
-    //   .then( userCredential => {
-    //     console.log('Sign up')
-    //   });
-    // });
-    
-    document.getElementById('Register__iconBack').addEventListener('click', () => {
-      window.location.hash = '#/login';
-    });
-
-    document.getElementById('register').addEventListener('click', registerUser);
-  };
+  document.getElementById('register').addEventListener('click', registerUser);
+};
 
 
 
@@ -56,7 +46,7 @@ export const Register = () => {
 
 
 
-
+// <span data-error="correo incorrecto" data-success="right"></span>
 
 // eslint-disable-next-line import/no-cycle
 // import { onNavigate } from '../main.js';

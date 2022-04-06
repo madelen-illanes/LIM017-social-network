@@ -118,7 +118,6 @@ export const loadPosts = async () => {
   return publishList;
 };
 
-
 // cerrar sesión
 export const loginOutUser = () => {
   signOut(auth).then(() => {
