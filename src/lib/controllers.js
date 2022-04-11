@@ -1,9 +1,12 @@
 /* eslint-disable arrow-body-style */
 import {
   // eslint-disable-next-line import/named
-  registerUser, loginUser, getCurrentUser,
+  registerUser,
+  loginUser,
+  updater, sendMail, startGoogle, Provider, loginOutUser, toPost, loadPosts, deletePost, editPost,
 } from './libraries-Firebase.js';
-// registra nuevos usuarios
+
+// Registra nuevos usuarios
 export const register = () => {
   const email = document.getElementById('e-mail').value;
   const password = document.getElementById('password').value;
@@ -11,8 +14,11 @@ export const register = () => {
   const fullName = document.getElementById('name').value;
   if (password === confirmPassword) {
     registerUser(email, password, fullName)
-      .then(() => {
+      .then((userCredential) => {
+        updater(fullName);
+        sendMail();
         window.location.hash = '/login';
+        return userCredential.user;
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -22,19 +28,20 @@ export const register = () => {
       });
   } else {
     // eslint-disable-next-line no-alert
-    alert('no coincide la contraseña');
+    alert('No coincide la contraseña');
   }
 };
 
-// logea usuarios registrados
+// Logea usuarios registrados
 export const login = () => {
   const email = document.getElementById('e-mailLogin').value;
   const password = document.getElementById('passwordLogin').value;
   loginUser(email, password)
-    .then(() => {
+    .then((userCredential) => {
       // Signed in
       window.location.hash = '#/home';
       // ...
+      return userCredential.user;
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -44,38 +51,79 @@ export const login = () => {
     });
 };
 
-// Iniciar sesión con Google
-// export const loginGoogle = () => {
-//   return startGoogle
-//     .then(() => {
-//       // Signed in
-//       window.location.hash = '#/home';
-//     })
-//     .catch((error) => {
-//       // Handle Errors here.
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       // The email of the user's account used.
-//       const email = error.email;
-//       // The AuthCredential type that was used.
-//       const credential = GoogleAuthProvider.credentialFromError(error);
-//       // ...
-//     });
-// };
+// Inicia sesión con Google
+export const loginGoogle = () => {
+  startGoogle(new Provider())
+    .then(() => {
+      window.location.hash = '#/home';
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = Provider.credentialFromError(error);
+      // ...
+    });
+};
 
-export const getCurrent = () => getCurrentUser('anonimo');
+// Cierra sesión
+export const loginOut = () => {
+  loginOutUser().then(() => {
+    window.location.hash = '#/login';
+  // Sign-out successful.
+  }).catch((error) => {
+  // An error happened.
+  });
+};
 
-// crea colección
-// Crear un documento con el contenido a publicar en la colección publicaciones
-// export const toPoster = () => {
-//   const forPost = document.querySelector('.post__input').value;
-//   const user = getCurrent();
+// Crea un documento en la coleccion de firestore
+export const toPostDocument = () => {
+  // const user = auth.currentUser;
+  const contentPost = document.querySelector('.post__input').value;
+  return toPost(contentPost).then((docRef) => {
+    console.log(docRef.id);
+  });
+};
 
-//   const dateTime = toTheTime();
-//   // const content = forPost;
-//   const photo = user.photoURL;
+// publica el post
+export const printPost = () => {
+  function idk(querySnapshot) {
+    const containerPost = document.querySelector('.main__div-postPeople');
+    let html = '';
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.data());
+      const dataDoc = doc.data();
+      html += `
+    <section class="main__section-postPeople" id="">
+        <h3>${dataDoc.user}.</h3>
+        <p id="postHour">Publicado a las: ${dataDoc.dateTime.toDate()}</p>
+        <p>${dataDoc.content}</p>
+        <figure>
+          <img class="post2Img" src="../images/foto-post.jpg">
+        </figure>
+        <button class="deletePost" data-id='${doc.id}'>Eliminar</button>
+        <button class="editPost" data-id='${doc.id}'>Editar</button>
+      </section>`;
+    });
+    containerPost.innerHTML = html;
+    // borra documento del post
+    const buttonDelete = containerPost.querySelectorAll('.deletePost');
+    buttonDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deletePost(dataset.id);
+      });
+    });
 
-//   const docRef = toPost(user.displayName, user.uid, dateTime, forPost, photo);
-//   console.log('Document written with ID: ', docRef.id);
-//   return docRef;
-// };
+    const buttonEdit = containerPost.querySelectorAll('.editPost');
+    buttonEdit.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        const doc = await editPost(e.target.dataset.id);
+        const document = doc.data();
+        
+      });
+    });
+  }
+  loadPosts(idk);
+};

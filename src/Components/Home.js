@@ -1,17 +1,17 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-restricted-syntax */
 import {
-  loginOutUser, loadPosts, toPost,
+  getCurrentUser,
 } from '../lib/libraries-Firebase.js';
 import {
-  getCurrent,
+  loginOut, toPostDocument, printPost,
 } from '../lib/controllers.js';
 
 export const Home = () => {
-  const user = getCurrent();
-  console.log('del home', getCurrent().email);
+  const user = getCurrentUser();
+  console.log('del home', getCurrentUser().email);
   const userName = user.displayName.charAt(0).toUpperCase();
-  loadPosts();
+  printPost();
 
   document.getElementById('root').innerHTML = `
   <header class="header">
@@ -46,22 +46,21 @@ export const Home = () => {
         <p>Foto</p>
       </div>
       <button class="post__button">Publicar</button>
-      <button class="delete__button">Borrar</button>
-    </div>    
+          </div>    
     <div class="main__div-postPeople">
     </div>
   </main>
   </div>`;
 
-  const loginOut = document.getElementById('loginOut');
-  loginOut.addEventListener('click', () => loginOutUser());
+  const loginOutButton = document.getElementById('loginOut');
+  loginOutButton.addEventListener('click', () => loginOut());
 
   // const upPhoto = document.getElementById('upPhoto');
 
   const userPost = document.querySelector('.post__button');
   userPost.addEventListener('click', () => {
     if (document.querySelector('.post__input').value !== '') {
-      toPost();
+      toPostDocument();
       document.querySelector('.post__input').value = '';
     }
   });
