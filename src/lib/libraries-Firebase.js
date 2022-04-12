@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import {
   getFirestore,
@@ -21,6 +22,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 import { app } from './configurationfirebase.js';
@@ -85,12 +87,20 @@ export const loadPosts = async (idk) => {
 export const deletePost = async (id) => {
   await deleteDoc(doc(db, 'publicaciones', id));
 };
-
-// Editar un documento que tiene la publicacion
-export const editPost = async (id) => {
-  await getDoc(doc(db, 'publicaciones', id));
+// Editar Post
+export const editPost = (id) => {
+  return getDoc(doc(db, 'publicaciones', id));
 };
+
+// Actualizar post (documento en firestore)
+export const updatePost = (id, newContent) => updateDoc(doc(db, 'publicaciones', id), newContent);
+
 // Funcion para cerrar sesión
 export const loginOutUser = () => {
   return signOut(auth);
+};
+
+// OBSERVADOR
+export const observator = async (userftn) => {
+  await onAuthStateChanged(auth, userftn);
 };

@@ -3,7 +3,9 @@ import {
   // eslint-disable-next-line import/named
   registerUser,
   loginUser,
-  updater, sendMail, startGoogle, Provider, loginOutUser, toPost, loadPosts, deletePost, editPost,
+  updater, sendMail, startGoogle,
+  Provider, loginOutUser, toPost, loadPosts, deletePost, getCurrentUser, observator, editPost,
+  updatePost,
 } from './libraries-Firebase.js';
 
 // Registra nuevos usuarios
@@ -25,10 +27,16 @@ export const register = () => {
         const errorMessage = error.message;
         console.log(`Code: ${errorCode}`);
         console.log(`Message: ${errorMessage}`);
+        if (errorCode === 'auth/weak-password') {
+          document.getElementById('alertErrorPassword-Register').innerHTML = 'La contraseña debe tener mínimo 6 caracteres';
+        }
+        if (errorCode === 'auth/email-already-in-use') {
+          document.getElementById('alertErrorEmail-Register').innerHTML = 'Cuenta de usuario en uso';
+        }
       });
   } else {
     // eslint-disable-next-line no-alert
-    alert('No coincide la contraseña');
+    document.getElementById('alertErrorPassword-Register').innerHTML = 'La contraseña no coincide';
   }
 };
 
@@ -39,7 +47,7 @@ export const login = () => {
   loginUser(email, password)
     .then((userCredential) => {
       // Signed in
-      window.location.hash = '#/home';
+      // window.location.hash = '#/home';
       // ...
       return userCredential.user;
     })
@@ -48,6 +56,13 @@ export const login = () => {
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
+      if (errorCode === 'auth/user-not-found') {
+        document.getElementById('alertErrorEmail-Login').innerHTML = 'El usuario no ha sido encontrado';
+      }
+      if (errorCode === 'auth/wrong-password') {
+        document.getElementById('alertErrorEmail-Login').innerHTML = '';
+        document.getElementById('alertErrorPassword-Login').innerHTML = 'Contraseña incorrecta';
+      }
     });
 };
 
@@ -55,7 +70,7 @@ export const login = () => {
 export const loginGoogle = () => {
   startGoogle(new Provider())
     .then(() => {
-      window.location.hash = '#/home';
+      // window.location.hash = '#/home';
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -71,23 +86,17 @@ export const loginGoogle = () => {
 // Cierra sesión
 export const loginOut = () => {
   loginOutUser().then(() => {
-    window.location.hash = '#/login';
+    // window.location.hash = '#/login';
   // Sign-out successful.
   }).catch((error) => {
   // An error happened.
   });
 };
 
-// Crea un documento en la coleccion de firestore
-export const toPostDocument = () => {
-  // const user = auth.currentUser;
-  const contentPost = document.querySelector('.post__input').value;
-  return toPost(contentPost).then((docRef) => {
-    console.log(docRef.id);
-  });
-};
-
 // publica el post
+// statusOfEdition: ve el estado de la edición(actualización) y/o creción del documento de firestore
+let statusOfEdition = false;
+let id = '';
 export const printPost = () => {
   function idk(querySnapshot) {
     const containerPost = document.querySelector('.main__div-postPeople');
@@ -96,16 +105,22 @@ export const printPost = () => {
       // console.log(doc.data());
       const dataDoc = doc.data();
       html += `
-    <section class="main__section-postPeople" id="">
+        <section class="main__section-postPeople" id="">
         <h3>${dataDoc.user}.</h3>
         <p id="postHour">Publicado a las: ${dataDoc.dateTime.toDate()}</p>
         <p>${dataDoc.content}</p>
         <figure>
           <img class="post2Img" src="../images/foto-post.jpg">
         </figure>
+        </section>`;
+      if (dataDoc.uid === getCurrentUser().uid) {
+        html += `
         <button class="deletePost" data-id='${doc.id}'>Eliminar</button>
-        <button class="editPost" data-id='${doc.id}'>Editar</button>
-      </section>`;
+        <button class="editPost" data-id='${doc.id}'>Editar</button>`;
+      } else {
+        html += `
+        <button class="deletePost" data-id=''>Dame like pe' ;v</button>`;
+      }
     });
     containerPost.innerHTML = html;
     // borra documento del post
@@ -115,15 +130,49 @@ export const printPost = () => {
         deletePost(dataset.id);
       });
     });
-
+    // editar post
     const buttonEdit = containerPost.querySelectorAll('.editPost');
     buttonEdit.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
         const doc = await editPost(e.target.dataset.id);
-        const document = doc.data();
-        
+        // devuelve los datos del documento de firestore
+        const infoDocToEdit = doc.data();
+        const contentPost = document.querySelector('.post__input');
+        // consigue el valor del input y lo devuelve como dice en el documento de firestore
+        contentPost.value = infoDocToEdit.content;
+        // cambia el estado de la edición a true
+        statusOfEdition = true;
+        id = doc.id;
       });
     });
   }
   loadPosts(idk);
+};
+
+// Crea un documento en la coleccion de firestore
+export const toPostDocument = async () => {
+  // const user = auth.currentUser;
+  const contentPost = document.querySelector('.post__input').value;
+  if (!statusOfEdition) {
+    const docRef = await toPost(contentPost);
+    console.log(docRef.id);
+  // console.log(docRef.data().uid);
+  } else {
+    updatePost(id, { content: contentPost });
+  }
+};
+
+// // observator
+export const observatorIt = () => {
+  function userftn(user) {
+    if (user) {
+      console.log(user.uid, user.displayName, user.emailVerified);
+      window.location.hash = '#/home';
+    } else {
+      console.log('no');
+      window.location.hash = '#/login';
+    }
+    return user;
+  }
+  observator(userftn);
 };
