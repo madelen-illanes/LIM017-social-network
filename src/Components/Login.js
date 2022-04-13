@@ -1,8 +1,7 @@
-/* eslint-disable import/named */
 // eslint-disable-next-line import/no-cycle
 
-// import { startGoogle } from '../lib/libraries-Firebase.js';
-import { login, loginGoogle } from '../lib/controllers.js';
+import { startGoogle } from '../lib/libraries-Firebase.js';
+import { login } from '../lib/controllers.js';
 
 // document.addEventListener('DOMContentLoaded', observatorIt());
 export const Login = () => {
@@ -38,13 +37,13 @@ export const Login = () => {
   getRegister.addEventListener('click', () => {
     window.location.hash = '#/register';
   });
-  //  Iniciar sesiión//
 
+  //  Iniciar sesiión//
   starting.addEventListener('click', () => {
     login();
   });
   const loginGoogleButton = document.getElementById('google');
   loginGoogleButton.addEventListener('click', () => {
-    loginGoogle();
+    startGoogle();
   });
 };
