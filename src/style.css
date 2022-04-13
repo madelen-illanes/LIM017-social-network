@@ -521,34 +521,28 @@
     }
             
 }
-    .editPost{
+    .editPost,.deletePost{
         width: 100px;
         height: 24px;
         background: linear-gradient(180deg, #8b42c3 18.48%, #7d3cb6 36.31%, #621ea7 58.39%, #420e86 100%);
         border: none;
-        align-self: flex-end;
-        margin-inline-end: 10%;
         border-radius: 8px;
         color: white;
         font-weight: 500;
         margin-top: -24px;
         cursor: pointer; 
-        }
-    .deletePost{
-        width: 100px;
-        height: 24px;
-        background: linear-gradient(180deg, #8b42c3 18.48%, #7d3cb6 36.31%, #621ea7 58.39%, #420e86 100%);
-        border: none;
-        align-self: flex;
-        margin-inline-start: 30%;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        margin-top: -24px;
-        cursor: pointer;
-    }       
-
-
+    }
+    .likePost{
+    height: 24px;
+    width: 50npmpx;
+    background: linear-gradient(180deg, #8b42c3 18.48%, #7d3cb6 36.31%, #621ea7 58.39%, #420e86 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    margin-top: -24px;
+    cursor: pointer; 
+}
 
 @media screen and (max-width: 413px){
     .header{}

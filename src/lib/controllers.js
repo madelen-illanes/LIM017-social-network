@@ -72,7 +72,7 @@ export const printPost = () => {
         <figure>
           <img class="post2Img" src="../images/foto-post.jpg">
         </figure>
-        <button class="likePost" data-id='${doc.id}'><i class="fa-solid fa-thumbs-up"></i></i> Like</button>
+        <button class="likePost" data-id='${doc.id}'><i class="fa-solid fa-thumbs-up"></i></i></button>
         `;
       if (dataDoc.uid === getCurrentUser().uid) {
         html += `
