@@ -6,3 +6,9 @@ describe('myFunction', () => {
     expect(typeof myFunction).toBe('function');
   });
 });
+
+describe('myFunction', () => {
+  it('debería ser una función', () => {
+    expect(typeof myFunction).toBe('function');
+  });
+});
