@@ -23,6 +23,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  getCurrentUser,
 } from './Firebase-Import.js';
 
 // eslint-disable-next-line no-unused-vars
@@ -57,9 +58,9 @@ export const startGoogle = () => {
 };
 
 // Funcion para obtener la información del perfil del usuario logeado
-export const getCurrentUser = () => {
-  return auth.currentUser;
-};
+// export const getCurrentUser = () => {
+//   return auth.currentUser;
+// };
 
 // Crear un documento con el contenido a publicar en la colección publicaciones
 export const toPost = async (contentPost) => {

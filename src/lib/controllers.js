@@ -2,9 +2,10 @@ import {
   // eslint-disable-next-line import/named
   registerUser,
   loginUser,
-  updater, sendMail, toPost, loadPosts, deletePost, getCurrentUser, editPost, observator,
+  updater, sendMail, toPost, loadPosts, deletePost, editPost, observator,
   updatePost, arrayR, arrayU,
 } from './libraries-Firebase.js';
+import { getCurrentUser } from './Firebase-Import.js';
 
 // eslint-disable-next-line import/no-cycle
 import { routes } from './routes.js';
@@ -20,19 +21,21 @@ export const register = () => {
       .then((userCredential) => {
         updater(fullName);
         sendMail();
-        routes('#/home');
+        routes('#/login');
         return userCredential.user;
       })
       .catch((error) => {
         if (error.code === 'auth/weak-password') {
-          document.getElementById('alertErrorPassword-Register').innerHTML = 'La contraseña debe tener mínimo 6 caracteres';
+          document.getElementById('alertErrorPassword-Register').innerHTML = '';
+          document.getElementById('alertErrorPassword-Register').innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> La contraseña debe tener mínimo 6 caracteres';
         }
         if (error.code === 'auth/email-already-in-use') {
-          document.getElementById('alertErrorEmail-Register').innerHTML = 'Cuenta de usuario en uso';
+          document.getElementById('alertErrorPassword-Register').innerHTML = '';
+          document.getElementById('alertErrorEmail-Register').innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Cuenta de usuario en uso';
         }
       });
   } else {
-    document.getElementById('alertErrorPassword-Register').innerHTML = 'La contraseña no coincide';
+    document.getElementById('alertErrorPassword-Register').innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> La contraseña no coincide';
   }
 };
 
@@ -41,14 +44,15 @@ export const login = () => {
   const email = document.getElementById('e-mailLogin').value;
   const password = document.getElementById('passwordLogin').value;
   loginUser(email, password)
-    .then((userCredential) => userCredential)
+    .then((userCredential) => console.log(userCredential))
     .catch((error) => {
       if (error.code === 'auth/user-not-found') {
-        document.getElementById('alertErrorEmail-Login').innerHTML = 'El usuario no ha sido encontrado';
+        document.getElementById('alertErrorPassword-Login').innerHTML = '';
+        document.getElementById('alertErrorEmail-Login').innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> El usuario no ha sido encontrado';
       }
       if (error.code === 'auth/wrong-password') {
         document.getElementById('alertErrorEmail-Login').innerHTML = '';
-        document.getElementById('alertErrorPassword-Login').innerHTML = 'Contraseña incorrecta';
+        document.getElementById('alertErrorPassword-Login').innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Contraseña incorrecta';
       }
     });
 };
@@ -64,28 +68,27 @@ const qSnapshot = (querySnapshot) => {
   querySnapshot.forEach((doc) => {
     // console.log(doc.data());
     const dataDoc = doc.data();
+    // dataDoc.photo
     html += `
-        <article class="main__section-postPeople" id="">
-        <div><img src="${dataDoc.photo}"></div>
+      <article class="main__section-postPeople" id="">
         <h3>${dataDoc.user.replace(/\b\w/g, (l) => l.toUpperCase())}.</h3>
-        <p id="postHour">Publicado ${dataDoc.dateTime.toDate().toDateString()} a las ${dataDoc.dateTime.toDate().toLocaleTimeString('es-PE')}.</p>
+        <p id="postHour">Publicado ${dataDoc.dateTime.toDate().toDateString()} a las ${dataDoc.dateTime.toDate().toLocaleTimeString('es-PE')} hrs.</p>
         <p id="content-p">${dataDoc.content}</p><input type="text" hidden="true" id="edit-post">
         <figure>
           <img class="post2Img" src="../images/foto-post.jpg">
         </figure>
-        <button class="likePost" data-id='${doc.id}'><i class="fa-solid fa-thumbs-up"></i></i>${dataDoc.likesNumber} Like</button>
-        `;
+        <div>
+        <div class="likePost__div">
+          <button class="likePost" data-id='${doc.id}'><i class="fa-solid fa-thumbs-up"></i></i> ${dataDoc.likesNumber} Likes</button>
+        </div>`;
     if (dataDoc.uid === getCurrentUser().uid) {
       html += `
-          <button class="deletePost" data-id='${doc.id}'>Eliminar</button>
-          <div hidden="" id="divConfirm">
-            <p>Seguro deseas eliminar el post</p>
-            <button id="confirmar">Eliminar</button>
-            <button id="cancelar">Cancelar</button>
-          </div>
-          <button class="editPost" data-id='${doc.id}'>Editar</button>
-        </article>
-      </div>`;
+        <div class="bottonPostUser__div">
+          <button class="deletePost bottonPostUser" data-id='${doc.id}'>Eliminar</button>
+          <button class="editPost bottonPostUser" data-id='${doc.id}'>Editar</button>
+        </div>
+        </div>
+      </article>`;
     } else {
       html += `
         </article>`;
@@ -120,6 +123,11 @@ const qSnapshot = (querySnapshot) => {
   //     });
   //   });
   // });
+  // <div hidden="" id="divConfirm">
+  //   <p>Seguro deseas eliminar el post</p>
+  //   <button id="confirmar">Eliminar</button>
+  //   <button id="cancelar">Cancelar</button>
+  // </div>
 
   // editar post
   const buttonEdit = containerPost.querySelectorAll('.editPost');
