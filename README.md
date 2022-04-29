@@ -116,9 +116,9 @@ En el proyecto se han marcado distintos objetivos de aprendizaje los cuales se d
 
 ### Firebase
 
-- [✔] **Firebase Auth**
+- [✔.png] **Firebase Auth**
 
-- [✔] **Firestore**
+- [✔.png] **Firestore**
 
 ## 4. Criterios de aceptación mínimos del proyecto
 
@@ -133,27 +133,27 @@ Tomando estas necesidades creamos a aplicación para que las mujeres tengan un e
 
 Una vez definidas las necesidades se crearon historias de usuarios que puedan solucionar las mismas.
 
-![historia1](historia1)
-![historia2](historia2)
-![historia3](historia3)
+![historia1](historia1.png)
+![historia2](historia2.png)
+![historia3](historia3.png)
 ### 4.3 Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
 
 El prototipo que se penso en un inicio, detalla cada una de las expectativas que se tendrá al diseñar una interfaz amigable para las usuarias.
 
-![prototipo1](prototipo1)
-![prototipo2](prototipo2)
-![prototipo3](prototipo3)
+![prototipo1](prototipo1.png)
+![prototipo2](prototipo2.png)
+![prototipo3](prototipo3.png)
 ### 4.5 Responsive
 
 El proyecto se diseño tanto para dispositivos de pantallas grandes
 (computadoras/es, laptops, etc.) y pequeñas (_tablets_, celulares, etc.). Se siguió la técnica de _`mobile first`.
 Para tener la idea final del proyecto se diseñó el  PROTOTIPO DE ALTA FIDELIDAD:
 
-![logindesktop](logindesktop)
-![registerdesktop](registerdesktop)
-![homedesktop](homedesktop)
-![loginmovil](loginmovil)
-![homemovil](homemovil)
+![logindesktop](logindesktop.png)
+![registerdesktop](registerdesktop.png)
+![homedesktop](homedesktop.png)
+![loginmovil](loginmovil.png)
+![homemovil](homemovil.png)
 
 ### 4.6 Consideraciones del comportamiento de la interfaz de usuario (UI)
 
