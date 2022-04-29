@@ -42,83 +42,83 @@ En el proyecto se han marcado distintos objetivos de aprendizaje los cuales se d
 
 ### HTML
 
-- [:tw-2705:] **Uso de HTML semántico**
+-  [✔] **Uso de HTML semántico**
 ### CSS
 
-- [:tw-2705:] **Uso de selectores de CSS**
+- [✔] **Uso de selectores de CSS**
 
-- [:tw-2705:] **Uso de flexbox en CSS**
+- [✔] **Uso de flexbox en CSS**
 
-- [:tw-2705:] **Uso de CSS Grid Layout**
+- [✔] **Uso de CSS Grid Layout**
 
  ### Web APIs
 
-- [:tw-2705:] **Uso de selectores del DOM**
+- [✔] **Uso de selectores del DOM**
 
-- [:tw-2705:] **Manejo de eventos del DOM (listeners, propagación, delegación)**
+- [✔] **Manejo de eventos del DOM (listeners, propagación, delegación)**
 
-- [:tw-2705:] **Manipulación dinámica del DOM**
+- [✔] **Manipulación dinámica del DOM**
 
-- [:tw-2705:] **Ruteado (History API, evento hashchange, window.location)**
+- [✔] **Ruteado (History API, evento hashchange, window.location)**
 
  ### JavaScript
 
-- [:tw-2705:] **Arrays (arreglos)**
+- [✔] **Arrays (arreglos)**
 
-- [:tw-2705:] **Objetos (key, value)**
+- [✔] **Objetos (key, value)**
 
-- [:tw-2705:] **Uso de condicionales (if-else, switch, operador ternario, lógica booleana)**
+- [✔] **Uso de condicionales (if-else, switch, operador ternario, lógica booleana)**
 
-- [:tw-2705:] **Uso de bucles/ciclos (while, for, for..of)**
+- [✔] **Uso de bucles/ciclos (while, for, for..of)**
 
-- [:tw-2705:] **Funciones (params, args, return)**
+- [✔] **Funciones (params, args, return)**
 
-- [:tw-2705:] **Pruebas unitarias (unit tests)**
+- [✔] **Pruebas unitarias (unit tests)**
 
-- [:tw-2705:] **Pruebas asíncronas**
+- [✔] **Pruebas asíncronas**
 
-- [:tw-2705:] **Uso de mocks y espías**
+- [✔] **Uso de mocks y espías**
 
-- [:tw-2705: ] **Módulos de ECMAScript (ES Modules)**
+- [✔] **Módulos de ECMAScript (ES Modules)**
 
-- [:tw-2705:] **Uso de linter (ESLINT)**
+- [✔] **Uso de linter (ESLINT)**
 
-- [:tw-2705:] **Uso de identificadores descriptivos (Nomenclatura y Semántica)**
+- [✔] **Uso de identificadores descriptivos (Nomenclatura y Semántica)**
 
-- [:tw-2705:] **Diferenciar entre expresiones (expressions) y sentencias (statements)**
+- [✔] **Diferenciar entre expresiones (expressions) y sentencias (statements)**
 
-- [:tw-2705:] **Callbacks**
+- [✔] **Callbacks**
 >
-- [:tw-2705:] **Promesas**
+- [✔] **Promesas**
 
 ### Control de Versiones (Git y GitHub)
 
-- [:tw-2705:] **Git: Instalación y configuración**
+- [✔] **Git: Instalación y configuración**
 
-- [:tw-2705:] **Git: Control de versiones con git (init, clone, add, commit, status, push, pull, remote)**
+- [✔] **Git: Control de versiones con git (init, clone, add, commit, status, push, pull, remote)**
 
-- [:tw-2705:] **Git: Integración de cambios entre ramas (branch, checkout, fetch, merge, reset, rebase, tag)**
+- [✔] **Git: Integración de cambios entre ramas (branch, checkout, fetch, merge, reset, rebase, tag)**
 
-- [:tw-2705:] **GitHub: Creación de cuenta y repos, configuración de llaves SSH**
+- [✔] **GitHub: Creación de cuenta y repos, configuración de llaves SSH**
 
-- [:tw-2705:] **GitHub: Despliegue con GitHub Pages**
+- [✔] **GitHub: Despliegue con GitHub Pages**
 
-- [:tw-2705:] **GitHub: Colaboración en Github (branches | forks | pull requests | code review | tags)**
+- [✔] **GitHub: Colaboración en Github (branches | forks | pull requests | code review | tags)**
 
-- [:tw-2705:] **GitHub: Organización en Github (projects | issues | labels | milestones | releases)**
+- [✔] **GitHub: Organización en Github (projects | issues | labels | milestones | releases)**
 
 ### UX (User eXperience)
 
-- [:tw-2705:] **Diseñar la aplicación pensando en y entendiendo al usuario**
-- [:tw-2705:] **Crear prototipos para obtener feedback e iterar**
-- [:tw-2705:] **Aplicar los principios de diseño visual (contraste, alineación, jerarquía)**
-- [:tw-2705:] **Planear y ejecutar tests de usabilidad**
+- [✔] **Diseñar la aplicación pensando en y entendiendo al usuario**
+- [✔] **Crear prototipos para obtener feedback e iterar**
+- [✔] **Aplicar los principios de diseño visual (contraste, alineación, jerarquía)**
+- [✔] **Planear y ejecutar tests de usabilidad**
 
 ### Firebase
 
-- [:tw-2705:] **Firebase Auth**
+- [✔] **Firebase Auth**
 
-- [:tw-2705:] **Firestore**
+- [✔] **Firestore**
 
 ## 4. Criterios de aceptación mínimos del proyecto
 
