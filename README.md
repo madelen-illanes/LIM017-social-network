@@ -140,9 +140,9 @@ Una vez definidas las necesidades se crearon historias de usuarios que puedan so
 
 El prototipo que se penso en un inicio, detalla cada una de las expectativas que se tendrá al diseñar una interfaz amigable para las usuarias.
 
-![prototipo1](prototipo1.png)
-![prototipo2](prototipo2.png)
-![prototipo3](prototipo3.png)
+![prototipo1](prototipo1.jpg)
+![prototipo2](prototipo2.jpg)
+![prototipo3](prototipo3.jpg)
 ### 4.5 Responsive
 
 El proyecto se diseño tanto para dispositivos de pantallas grandes
