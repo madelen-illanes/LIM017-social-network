@@ -1,6 +1,7 @@
 import { Home } from '../../src/Components/Home.js';
-import { addDoc, getCurrentUser, signOut } from '../../src/lib/Firebase-Import.js';
-import { toPostDocument } from '../../src/lib/controllers.js';
+import {
+  addDoc, getCurrentUser, signOut, onSnapshot,
+} from '../../src/lib/Firebase-Import.js';
 
 jest.mock('../../src/lib/Firebase-Import.js');
 
@@ -19,7 +20,7 @@ describe('Home', () => {
     const userPost = document.querySelector('.post__button');
     document.querySelector('.post__input').value = 'abc';
     userPost.dispatchEvent(new Event('click'));
-    // console.log(addDoc.mock.calls);
     expect(addDoc).toHaveBeenCalledTimes(1);
+    expect(onSnapshot).toHaveBeenCalledTimes(1);
   });
 });

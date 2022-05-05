@@ -1,9 +1,8 @@
 export const initializeApp = () => Promise.resolve({});
 // Autenticación
 export const getAuth = () => ({});
-// { currentUser: { displayName: '' } };
 // eslint-disable-next-line max-len
-export const createUserWithEmailAndPassword = jest.fn((auth, email, password) => { console.log('h'); return Promise.resolve({ user: { email, password } }); });
+export const createUserWithEmailAndPassword = jest.fn((auth, email, password) => { console.log('hhhhhhhhhhh'); return Promise.resolve({ user: { email, password } }); });
 export const updateProfile = jest.fn((fullName) => ({ displayName: fullName }));
 export const sendEmailVerification = () => Promise.resolve({});
 export const signInWithPopup = jest.fn((auth, provider) => Promise.resolve({ }));
@@ -13,7 +12,7 @@ export class GoogleAuthProvider {}
 // eslint-disable-next-line max-len
 export const signInWithEmailAndPassword = jest.fn((auth, email, password) => Promise.resolve({ user: { email, password } }));
 export const signOut = jest.fn(() => Promise.resolve({}));
-export const onAuthStateChanged = () => Promise.resolve({});
+export const onAuthStateChanged = jest.fn((auth, callback) => Promise.resolve({ user: {} }));
 
 // getCurrentUser
 export const getCurrentUser = jest.fn(() => ({ displayName: 'Lady Gaga' }));
@@ -22,7 +21,7 @@ export const getCurrentUser = jest.fn(() => ({ displayName: 'Lady Gaga' }));
 export const getFirestore = () => Promise.resolve({});
 export const addDoc = jest.fn((collection, {}) => Promise.resolve({}));
 export const collection = (db, publicaciones) => ({});
-export const onSnapshot = (query, callback) => Promise.resolve({});
+export const onSnapshot = jest.fn((query, callback) => Promise.resolve({}));
 // eslint-disable-next-line no-undef
 export const Timestamp = { fromDate: (date) => date };
 export const query = () => Promise.resolve({});
