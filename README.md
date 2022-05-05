@@ -115,53 +115,45 @@ En el proyecto se han marcado distintos objetivos de aprendizaje los cuales se d
 - [✔] **Planear y ejecutar tests de usabilidad**
 
 ### Firebase
-
-- [✔.png] **Firebase Auth**
-
-- [✔.png] **Firestore**
+- [✓] **Firebase Auth**
+- [✓] **Firestore**
 
 ## 4. Criterios de aceptación mínimos del proyecto
-
 ### 4.1 Definición del producto
-
-FitWomen s creó en base a las necesidades que tienen las mujeres que desean inicier una vida saludable,
+FitWomen's creó en base a las necesidades que tienen las mujeres que desean inicier una vida saludable,
 o mantienen ese estilo de vida. Tomamos en consideración que muchas de las mujeres no se atreven a pedir consejos de salud, alimentaciòn o rutina de ejercicios en una red social en donde interactúan personas de otro sexo; ya que en latinoamérica los estandares de belleza son definidos por un estereotipo muchas veces irreal, por lo tanto sienten un poco de temor al interactuar libremente sobre estos temas.
-
-Tomando estas necesidades creamos a aplicación para que las mujeres tengan un espacio seguro para compartir información que motivará su desarrollo físico, emocional y mental, transformando la idea de que las mujeres no puden tener un apoyo dentro de su propio género. 
-
+Tomando estas necesidades creamos a aplicación para que las mujeres tengan un espacio seguro para compartir información que motivará su desarrollo físico, emocional y mental, transformando la idea de que las mujeres no puden tener un apoyo dentro de su propio género.
 ### 4.2 Historias de usuario
-
 Una vez definidas las necesidades se crearon historias de usuarios que puedan solucionar las mismas.
-
-![historia1](historia1.png)
-![historia2](historia2.png)
-![historia3](historia3.png)
+![historia1](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/historia1.png?raw=true)
+![historia2](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/historia2.png?raw=true)
+![historia3](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/historia3.png?raw=true)
 ### 4.3 Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
-
 El prototipo que se penso en un inicio, detalla cada una de las expectativas que se tendrá al diseñar una interfaz amigable para las usuarias.
-
-![prototipo1](prototipo1.jpg)
-![prototipo2](prototipo2.jpg)
-![prototipo3](prototipo3.jpg)
-### 4.5 Responsive
-
+![prototipo1](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/prototipo1.jpg?raw=true)
+![prototipo2](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/prototipo2.jpg?raw=true)
+![prototipo3](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/prototipo2.jpg?raw=true)
+### 4.4 Responsive
 El proyecto se diseño tanto para dispositivos de pantallas grandes
 (computadoras/es, laptops, etc.) y pequeñas (_tablets_, celulares, etc.). Se siguió la técnica de _`mobile first`.
-Para tener la idea final del proyecto se diseñó el  PROTOTIPO DE ALTA FIDELIDAD:
+Para tener la idea final del proyecto se diseñó el  PROTOTIPO DE ALTA FIDELIDAD
 
-![logindesktop](logindesktop.png)
-![registerdesktop](registerdesktop.png)
-![homedesktop](homedesktop.png)
-![loginmovil](loginmovil.png)
-![homemovil](homemovil.png)
+#### 4.4.1 Desktop
 
-### 4.6 Consideraciones del comportamiento de la interfaz de usuario (UI)
+![logindesktop](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/logindesktop.png?raw=true)
 
+![registerdesktop](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/registerdesktop.png?raw=true)
+
+![homedesktop](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/homedesktop.png?raw=true)
+#### 4.4.2 Mobile
+
+![loginmovil](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/loginmovil.png?raw=true)
+
+![homemovil](https://github.com/thaliaroman/LIM017-social-network/blob/main/src/images/homemovil.png?raw=true)
+### 4.5 Consideraciones del comportamiento de la interfaz de usuario (UI)
 Estas consideraciones te ayudarán a escribir las Definiciones de Terminado de
 tus H.U.:
-
 #### Creación de cuenta de usuario e inicio de sesión
-
 * _Login_ con Firebase:
   - Para el _login_ y las publicaciones en el muro puedes utilizar [Firebase](https://firebase.google.com/products/database/)
   - Creación de cuenta de acceso y autenticación con cuenta de correo y
@@ -175,9 +167,7 @@ tus H.U.:
   - Al enviarse el formulario de registro o inicio de sesión, debe validarse.
   - Si hay errores, se deben mostrar mensajes descriptivos para ayudar al
   usuario a corregirlos.
-
 #### Muro/timeline
-
 * Validaciones:
   - Al publicar, se debe validar que exista contenido en el _input_.
 * Comportamiento:
