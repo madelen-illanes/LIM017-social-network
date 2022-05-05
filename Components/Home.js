@@ -26,7 +26,6 @@ export function toShowModal() {
 
 export const Home = () => {
   const user = getCurrentUser();
-  console.log(user);
   const userName = user.displayName.charAt(0).toUpperCase();
   printPost();
   const abcName = () => {
@@ -111,7 +110,6 @@ export const Home = () => {
   // click al input boton
   const getInput = document.getElementById('inputPost__editM');
   getInput.addEventListener('click', () => {
-    console.log('sí funciona el evento');
     toShowModal();
   });
 };
